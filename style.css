@@ -1,0 +1,220 @@
+/* * {
+  margin:0px;
+  padding:0px;
+  margin-left:0px;
+  padding-left:0px;
+  padding-top:0px;
+  left:0px;
+} */
+body {
+  background-color: black;
+  color: #ffffff;
+  font-family:"FreePixel";
+  font-size: large;
+  margin: 0px;
+  background: url('_images/room_gif.gif') no-repeat center bottom fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+:focus {
+    outline: none !important;
+}
+/* @font-face{
+    font-family: "Bookerly";
+    src: url('Bookerly/Bookerly-Regular.ttf');
+    url('Thonburi-Bold.eot'); IE
+
+}*/
+@font-face {
+  font-family: 'FreePixel';
+  src: url('_fonts/FreePixel.ttf');
+}
+@font-face {
+  font-family: 'thin_pixel';
+  src: url('_fonts/thin_pixel-7.ttf');
+}
+#chatContainer {
+  position: absolute;
+  top: 39px;
+  bottom: 5px;
+  left: 5px;
+  right: 10px;
+  padding-top: 3px;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-bottom: 3px;
+  overflow:auto;
+}
+#divChatBox {
+  position: absolute;
+  right: 0px;
+  left: 3px;
+  bottom: 85px;
+  top: 6px;
+  overflow-y: auto;
+  /* background: url('_images/room_gif.gif') no-repeat center bottom fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
+
+}
+#submitArea {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  left: 10px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid Black;
+  background-color: Black;
+  border-radius:14px;
+}
+#myInstance1 {
+  position: absolute;
+  right: 70px;
+  left: 10px;
+  height: 48px;
+  bottom: 5px;
+  overflow:auto;
+}
+/*
+#sendButton {
+  position: absolute;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  background-color:#333333;
+  border:1px solid #333333;
+  border-radius: 50%;
+  color: #cccccc;
+  font-family: 'FreePixel';
+  font-weight: bold;
+  -webkit-transition-duration: 0.4s;
+}
+
+#sendButton:hover {
+  background-color: #595959;
+  color: black;
+} */
+
+.menuBar {
+  background-color: black;
+  width: calc(100% - 10px);
+  padding-left: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+/* Formatting for text */
+.uiText {
+  color: #cccccc !important;
+}
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #991c48;
+}
+.timeStamp {
+  color: #991c48;
+  font-size: 12px;
+  font-style: normal !important;
+}
+.post {
+  display: inline-block;
+  border-radius: 14px;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 6px;
+}
+.postGM {
+  font-style: italic;
+  color: #991c48;
+}
+
+/* layout stuff */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.column {
+  float: left;
+  padding: 6px;
+}
+
+/* menu buttons */
+.menuButton {
+  background: Transparent;
+  border: none;
+  outline: none;
+  color: white;
+  border-radius: 4px;
+  font-family: 'FreePixel';
+  font-size: 20px;
+}
+.menuButton:hover {
+  color: #991c48;
+}
+
+.sendButton {
+  position: absolute;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+/* CSS for modals */
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+/* Modal Content/Box */
+.modal-content {
+    background-color: #1a1a1a !important;
+    border-radius: 10px;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid black;
+    width: 40%; /* Could be more or less, depending on screen size */
+}
+/* The Close Button */
+.close {
+    color: #cccccc;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* CSS for nicEditor */
+.nicEdit-panelContain {
+  border: 1px solid #333333 !important;
+  background-color: #333333 !important;
+  width: calc(100% - 2px)!important;
+}
+.nicEdit-panel {
+  background-color: #333333 !important;
+}
+.nicEdit-button {
+  background-color: #333333 !important;
+}

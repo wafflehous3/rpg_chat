@@ -1,0 +1,192 @@
+/* fonts */
+@font-face {
+  font-family: 'FreePixel';
+  src: url('_fonts/FreePixel.ttf');
+}
+
+/* stop stupid blue outline */
+:focus {
+    outline: none !important;
+}
+/* Word-wrap long words */
+/* Source: http://snipplr.com/view/10979/css-cross-browser-word-wrap */
+.wordwrap { 
+  white-space: pre-wrap;      /* CSS3 */   
+  white-space: -moz-pre-wrap; /* Firefox */    
+  white-space: -pre-wrap;     /* Opera <7 */   
+  white-space: -o-pre-wrap;   /* Opera 7 */    
+  word-wrap: break-word;      /* IE */
+}
+
+body {
+  margin: 0;
+  background-color: black;
+  color: #ffffff;
+  font-family:"FreePixel";
+}
+
+/* menu area */
+.wrapper {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto minmax(1fc, 1fc) auto;
+}
+
+.menuBar {
+  background-color: black;
+  display: grid;
+  grid-template-columns: 90px minmax(auto, 1fr) 120px;
+  padding: 6px;
+  padding-bottom: 0px;
+}
+
+.menuBox {
+  display: table-cell;
+  vertical-align: bottom;
+}
+
+/* Chat session block */
+.sessionArea {
+  grid-row-start: 2;
+  padding: 6px;
+  /* (Menu 24) + (Post Area 50) + 12 = ___ */
+  height: calc(100vh - 106px);
+
+  background: url('_images/room_gif.gif') no-repeat center bottom fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  overflow-y: auto;
+}
+
+/* post area */
+.postArea{
+  grid-row-start: 3;
+  display: grid;
+  grid-template-columns: minmax(20px, auto) 15px minmax(auto, 1fr) 70px;
+  padding: 6px;
+  height: 50px; /* -12 for padding! */
+}
+
+.postAreaBox {
+  padding-right: 6px;
+  padding-left: 6px;
+}
+
+.nameBox {
+  max-width: 170px;
+  overflow: auto;
+  padding-right: 6px;
+}
+
+.nameSeperator {
+  padding-left: 0px;
+  padding-right: 6px;
+}
+.postBox {
+  overflow-y: auto;
+}
+.sendBox {
+  text-align: left;
+  vertical-align: middle;
+  line-height: 38px;
+}
+
+/* post formating */
+.post {
+  /*display: inline-block;*/
+  border-radius: 14px;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 6px;
+  margin-bottom: 6px;
+}
+
+
+
+.postGM {
+  font-style: italic;
+  color: #991c48;
+}
+
+/* ui items */
+.title {
+  font-size: 20px;
+  color: #991c48;
+}
+.timeStamp {
+  color: #991c48;
+  font-size: 12px;
+  font-style: normal !important;
+}
+
+.menuButton {
+  background: Transparent;
+  border: none;
+  outline: none;
+  color: white;
+  border-radius: 4px;
+  font-family: 'FreePixel';
+  font-size: 20px !important;
+}
+
+.menuButton:hover {
+  color: #991c48;
+}
+
+/* CSS for modals */
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+/* Modal Content/Box */
+.modal-content {
+    background-color: rgb(0,0,0) !important;
+    border-radius: 10px;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid black;
+    width: 40%; /* Could be more or less, depending on screen size */
+    min-width: 230px;
+}
+.modalText {
+  font-size: 20px !important;
+}
+
+.diceContent {
+  display: grid;
+  grid-template-columns: 80px 170px;
+  grid-gap: 5px;
+}
+
+.diceEditable {
+  border: 2px;
+  border-style: solid;
+  border-color: white;
+  padding: 2px;
+}
+
+/* The Close Button */
+.close {
+    color: #cccccc;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>[RPG]</title>
+  <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body onbeforeunload="return confirmExit()">
+
+  <script>
+  // Close any open modals when clicking outside of them
+  window.onclick = function(event) {
+    var mLen = modals.length;
+    var index;
+
+    for (i = 0; i < mLen; i++) {
+      if (event.target == modals[i]) {
+        index = modals.indexOf(modals[i]);
+        modals[i].style.display = "none";
+        resetOpenFileText();
+        document.getElementById('fileToLoad').value = '';
+          if (index > -1){
+            modals.splice(modals[i], 1);
+          }
+        }
+      }
+    }
+        </script>
+
+  <div class="menuBar">
+    <span class="title">[RPG]</span>
+    <button id="newButton" class="menuButton" onClick="clearChat()">new</button>
+    <input type="button" id="saveButton" class="menuButton" value="save" name="send" onclick="downloadInnerHtml('test.html', 'divChatBox','text/html')"/>
+    <button id="openButton" class="menuButton" onClick="showModal(document.getElementById('openModal'))">open</button>
+    <button id="undoButton" class="menuButton" onClick="undoPost()">undo</button>
+    <!-- <input id="file-input" type="file" name="name"/> -->
+  </div>
+
+  <!-- popups for save/load dialogs -->
+  <div id="openModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onClick="closeModalButton(document.getElementById('openModal'))">&times;</span>
+      <p id="openFileText" class="uiText">Select a file to load, and click load file. See if I care.</p>
+      <input type="file" class="menuButton" id="fileToLoad" accept="text/html" onClick="resetOpenFileText()"><br>
+      <button class="menuButton" onclick="loadFileAsText()">Load selected file</button>
+    </div>
+  </div>
+
+  <!-- nicEditor scripting -->
+  <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script><script type="text/javascript">
+    //<![CDATA[
+      bkLib.onDomLoaded(function(){
+        var myNicEditor = new nicEditor(
+          {buttonList : ['bold','italic','forecolor','removeformat'], maxHeight : 48}
+        );
+
+        myNicEditor.addInstance('myInstance1')
+      });
+  //]]>
+
+  </script>
+
+  <div id='chatContainer'>
+      <div id="divChatBox"></div><br>
+    </div>
+      <div id='submitArea' class="border8">
+        <!-- Support for enter key to send. Not working 100% -->
+        <div id='myInstance1' class="column"></div>
+      <input type="button" id="sendButton" class="menuButton sendButton column" value="send" name="send" onclick="addPost()">
+      </div>
+
+    <script>
+    //ask before closing the window!
+      function confirmExit() {
+        return "Write something clever here...";
+      }
+      /* document.getElementById("myInstance1")
+    .addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode == 13 && document.getElementById("divChatBox").innerHTML != '') {
+        document.getElementById("sendButton").click();
+    }
+}); */
+    </script>
+</body>
+
+</html>
