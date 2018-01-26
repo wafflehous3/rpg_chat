@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>chat.rpg</title>
+  <link rel="stylesheet" type="text/css" href="gridStyle.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="script.js"></script>
+</head>
+<body onbeforeunload="return confirmExit()">
+
+  <script>
+  // Close any open modals when clicking outside of them
+  window.onclick = function(event) {
+    var mLen = modals.length;
+    var index;
+
+    for (i = 0; i < mLen; i++) {
+      if (event.target == modals[i]) {
+        index = modals.indexOf(modals[i]);
+        modals[i].style.display = "none";
+        resetOpenFileText();
+        document.getElementById('fileToLoad').value = '';
+          if (index > -1){
+            modals.splice(modals[i], 1);
+          }
+        }
+      }
+    }
+  </script>
+
+  <div class="wrapper">
+    <div class="menuBar">
+      <div class="menuBox title">rpgchat</div>
+      <div class="menuBox menuItems">
+        <button id="newButton" class="menuButton" onClick="clearChat()">new</button>
+        <button id="openButton" class="menuButton" onClick="showModal(document.getElementById('saveModal'))">save</button>
+        <button id="openButton" class="menuButton" onClick="showModal(document.getElementById('openModal'))">open</button>
+        <button id="undoButton" class="menuButton" onClick="undoPost()">undo</button>
+        <button id="diceButton" class="menuButton" onClick="showModal(document.getElementById('diceModal'))">dice</button>
+      </div>
+      <div class="menuBox"></div>
+    </div>
+    <div id="sessionArea" class="sessionArea"></div>
+    <div class="postArea">
+      <div id="nameBox" class="postAreaBox nameBox" contenteditable="true"></div>
+      <div class="postAreaBox nameSeperator">:</div>
+      <div id="postBox" class="postAreaBox postBox wordwrap" contenteditable="true">Post goes here...</div>
+      <div class="postAreaBox sendBox">
+      <button id="sendButton" class="menuButton" onclick="addPost()">send</button></div>
+    </div>
+  </div>
+
+  <!-- hidden popups for save/load dialogs -->
+  <div id="openModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onClick="closeModalButton(document.getElementById('openModal'))">&times;</span>
+      <p id="openFileText" class="uiText modalText">Select file to load:</p>
+      <input type="file" class="menuButton" id="fileToLoad" accept="text/html" onClick="resetOpenFileText()"><br>
+      <button style="padding-left:0px" class="menuButton" onclick="loadFileAsText()">Load selected file</button>
+    </div>
+  </div>
+
+  <div id="saveModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onClick="closeModalButton(document.getElementById('saveModal'))">&times;</span>
+      Filename to Save As: <input id="inputFileNameToSaveAs"></input><br>
+      <button onclick="saveTextAsFile()" class="menuButton">Save Text to File</button>
+    </div>
+  </div>
+
+  <div id="diceModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onClick="closeModalButton(document.getElementById('diceModal'))">&times;</span>
+      <div class="diceContent">
+        <div>Character:</div>
+        <div id="diceNameBox" class="diceEditable" contenteditable="true"></div>
+        <div>#Sides:</div>
+        <div id="diceSidesBox" class="diceEditable" contenteditable="true">20</div>
+        <div>#Dice:</div>
+        <div id="diceNumBox" class="diceEditable" contenteditable="true">1</div>
+        <div>Result:</div>
+        <div id="diceResultBox" class="diceEditable" contenteditable="true"></div>
+      </div>
+      <button onclick="diceRoller()" class="menuButton">roll the dice</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("postBox")
+    .addEventListener("keydown", function(event) {
+      //event.preventDefault();
+      if (event.keyCode === 13) {
+        if ( $('#postBox').text() == '' ){
+          event.preventDefault();
+          document.getElementById("postBox").innerHTML = '';
+        } else {
+          event.preventDefault();
+        str = document.getElementById("postBox").innerHTML;
+        //str = str.slice(0, -4);
+        /* window.alert(getElementById("postBox").innerText.length);*/
+        document.getElementById("postBox").innerHTML = str;
+        document.getElementById("sendButton").click();
+      }
+    }
+    });
+
+    $('#nameBox').keypress(function(event) {
+    if (event.keyCode == 13) {
+        event.preventDefault();
+    }
+});
+  </script>
+</body>
+</html>
